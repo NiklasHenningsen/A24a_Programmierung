@@ -1,0 +1,22 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-intermediate-lambda-reader.ss" "lang")((modname |001|) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
+;;Diese Funktion liefert die Summe aller Zahlen einer Liste Die leere Liste liefert 0
+;;sum: list with numbers -> Number
+(check-expect (sum '(1 2 3 4)) 10)
+(check-expect (sum '()) 0)
+(define sum
+  (lambda [ls]
+    (cond
+      [(empty? ls) 0]
+      [else (+ (first ls) (sum (rest ls)))])))
+
+;;Diese Funktion liefert das Produkt aller Zahlen einer Liste. Die leere Liste liefert 1
+;;prod: list with numbers -> Number
+(check-expect (prod '(1 2 3 4)) 24)
+(check-expect (prod '()) 1)
+(define prod
+  (lambda [ls]
+    (cond
+      [(empty? ls) 1]
+      [else (* (first ls) (prod (rest ls)))])))
